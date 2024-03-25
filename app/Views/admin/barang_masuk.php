@@ -15,7 +15,7 @@
 						</div>
 						<div class="mb-3 row ">
 							<label for="exampleInputPassword1" class="form-label">Jumlah Barang</label>
-							<input type="number" min="1" name="kuantitaskeluar" class="form-control" id="exampleInputPassword1" required>
+							<input type="number" min="1" name="kuantitas" class="form-control" id="exampleInputPassword1" required>
 						</div>
 						<div class="mb-3 row ">
 							<label for="exampleInputPassword1" class="form-label">Tanggal Keluar</label>
@@ -48,7 +48,7 @@
 									<tr>
 									<td><?= $no++?></td>
 									<td><?= $barang['nama']?></td>
-									<td><?= $barang['kuantitaskeluar']?></td>
+									<td><?= $barang['kuantitas']?></td>
 									<td><?= ($barang['masuk']=="0000-00-00")?"Belum di atur" : $barang['masuk'] ?></td>
 									<td><?= $barang['status']?></td>
 									<td colspan="2"><div class="inline-flex "><button class="btn btn-primary w-50 " onclick="show('edit-modal<?=$barang['id']?>')">EDIT</button><a href="<?=base_url('barang/delete/'.$barang['id'])?>" class="btn btn-danger w-50">DELETE</a></div></td>
