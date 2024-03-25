@@ -11,7 +11,13 @@ class Home extends BaseController
        
         $rememberToken = get_cookie('remember_token');
        
-        if(session()->has('user_id'))return redirect()->to(base_url('dashboard'));
+        if(session('level')){
+            return redirect()->to(base_url('admin/dashboard'));
+
+        }else{
+            return redirect()->to(base_url('dashboard'));
+
+        }
         if ($rememberToken) {
             $userModel = new UserModel();
             $user = $userModel->where('remember_token', $rememberToken)->first();
@@ -47,6 +53,7 @@ class Home extends BaseController
         $userData = [
             'user_id' => $user['id'],
             'username' => $user['username'],
+            'level' => $user['level'],
         ];
         session()->set($userData);
         
@@ -55,8 +62,8 @@ class Home extends BaseController
             $userModel->update($user['id'], ['remember_token' => $token]); 
             set_cookie('remember_token', $token, 86400 * 30); 
         }
-
-        return redirect()->to(base_url('/'))->withCookies();;
+        if($userData['level']){return redirect()->to(base_url('admin/dashboard'))->withCookies();}
+        return redirect()->to(base_url('/'))->withCookies();
     } else {
         return redirect()->back()->with('error', 'Invalid email or password');
     }

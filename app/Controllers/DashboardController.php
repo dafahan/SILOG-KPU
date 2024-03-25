@@ -15,4 +15,12 @@ class DashboardController extends BaseController
         return view('dashboard',$data);
       
     }
+    public function admin()
+
+    {$userModel = new UserModel();
+        $data = $userModel->find(session('user_id'));
+        $data['title'] = 'admin';
+         return view('admin/dashboard',$data);
+      
+    }
 }

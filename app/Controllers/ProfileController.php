@@ -14,6 +14,12 @@ class ProfileController extends BaseController
        
         return view('profile',$data);
     }
+    public function admin()
+    {   $userModel = new UserModel();
+        $data = $userModel->find(session('user_id'));
+        $data['title'] = 'profile';
+        return view('admin/profile',$data);
+    }
     
     public function download($filename)
     {
@@ -63,8 +69,9 @@ class ProfileController extends BaseController
             $userId = session('user_id'); 
         
             $userModel = new UserModel();
-            
-            $userModel->update($userId, ["password"=>$newPassword,"biografi"=>$newBio]);
+            $data = ["biografi"=>$newBio];
+            if($newPassword!='')$data["password"]=$newPassword;
+            $userModel->update($userId, $data);
             
       
     }

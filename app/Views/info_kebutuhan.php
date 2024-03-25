@@ -97,7 +97,7 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="profile"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
-								<a class="dropdown-item" href="#">Log out</a>
+								<a class="dropdown-item" href="<?=base_url('logout')?>">Log out</a>
 							</div>
 						</li>
 					</ul>
@@ -110,126 +110,53 @@
 					<h1 class="h3 mb-3"><strong>Info Kebutuhan </strong></h1>
 
 					<div class="row">
-						<div class="col-xl-6 col-xxl-5 d-flex">
+						<div class=" d-flex">
 							<div class="w-100">
-								<div class="row">
-									<div class="col-sm-6">
+								<?php
+									$counter = 0;
+								 foreach ($kebutuhan as $k) :
+								
+								if ($counter % 3 == 0) {
+									
+									echo '<div class="row">';
+								}
+								?>
+								
+
+									<div class="col-sm-4">
 										<div class="card">
 											<div class="card-body">
 												<div class="row">
 													<div class="col mt-0">
-														<h5 class="card-title">Kotak Suara</h5>
+														<h5 class="card-title"><?= $k['nama']?></h5>
 													</div>
 
 													
 												</div>
-												<h1 class="mt-1 mb-3">4.084.603</h1>
+												<h1 class="mt-1 mb-3"><?= $k['kuantitas']?></h1>
 												<div class="mb-0">
 													<span class="text"> <i class="mdi mdi-arrow-bottom-right"></i> Total Yang Dibutuhkan </span>
 												
 												</div>
 											</div>
 										</div>
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Tinta</h5>
-													</div>
-
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="feather"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">1.640.322</h1>
-												<div class="mb-0">
-													<span class="text"> <i class="mdi mdi-arrow-bottom-right"></i> Total Yang Dibutuhkan </span>
-													
-												</div>
-											</div>
-										</div>
+										
 									</div>
-									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Surat Suara</h5>
-													</div>
+									
 
-													
-												</div>
-												<h1 class="mt-1 mb-3">1.032.305</h1>
-												<div class="mb-0">
-													<span class="text"> <i class="mdi mdi-arrow-bottom-right"></i> Total Yang DIbutuhkan</span>
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Bilik Suara</h5>
-													</div>
+									
+								
+								<?php
+									$counter++;
+									if ($counter % 3 == 0 || $counter == count($kebutuhan)) {
+										echo '</div>';
+									}
+								endforeach;
+									?>
+							</div>
+						</div>
 
-													
-												</div>
-												<h1 class="mt-1 mb-3">3.280.644</h1>
-												<div class="mb-0">
-													<span class="text"> <i class="mdi mdi-arrow-bottom-right"></i> Total Yang Dibutuhkan </span>
 						
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-xl-6 col-xxl-7">
-							<div class="w-100">
-							<div class="row">
-									<div class="col-sm-6">
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Segel</h5>
-													</div>
-
-													
-												</div>
-												<h1 class="mt-1 mb-3">78.465.062</h1>
-												<div class="mb-0">
-													<span class="text"> <i class="mdi mdi-arrow-bottom-right"></i> Total Yang Dibutuhkan</span>
-												
-												</div>
-											</div>
-										</div>
-										<div class="card">
-											<div class="card-body">
-												<div class="row">
-													<div class="col mt-0">
-														<h5 class="card-title">Sampul</h5>
-													</div>
-
-													<div class="col-auto">
-														<div class="stat text-primary">
-															<i class="align-middle" data-feather="clipboard"></i>
-														</div>
-													</div>
-												</div>
-												<h1 class="mt-1 mb-3">44.888.421</h1>
-												<div class="mb-0">
-													<span class="text"> <i class="mdi mdi-arrow-bottom-right"></i> Total Yang Dibutuhkan </span>
-													
-												</div>
-											</div>
-										</div>	
-							</div>
-						</div>
 					</div>
 
 							

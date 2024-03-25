@@ -19,6 +19,7 @@
 
 	<link href="<?=base_url('template/static')?>/css/app.css" rel="stylesheet">
 	<link href="<?=base_url('template/static')?>/https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -34,13 +35,13 @@
 						Halaman Utama
 					</li>
 
-					<li class="sidebar-item ">
+					<li class="sidebar-item <?= ($title=='admin')? 'active':'' ?>">
 						<a class="sidebar-link" href="dashboard">
               <i class="align-middle" data-feather="sliders"></i> <span class="align-middle">Dashboard</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item <?= ($title=='profile')? 'active':'' ?>">
 						<a class="sidebar-link" href="profile">
               <i class="align-middle" data-feather="user"></i> <span class="align-middle">Profile</span>
             </a>
@@ -50,31 +51,31 @@
 						Menu Utama
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item <?= ($title=='kebutuhan')? 'active':'' ?>">
 						<a class="sidebar-link" href="info_kebutuhan">
               <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Info Kebutuhan</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item <?= ($title=='sortir')? 'active':'' ?>">
 						<a class="sidebar-link" href="hasil_sortir">
               <i class="align-middle" data-feather="check-square"></i> <span class="align-middle">Hasil Sortir</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
+					<li class="sidebar-item <?= ($title=='masuk')? 'active':'' ?>">
 						<a class="sidebar-link" href="barang_masuk">
               <i class="align-middle" data-feather="file-plus"></i> <span class="align-middle">Barang Masuk</span>
             </a>
 					</li>
 
-					<li class="sidebar-item ">
+					<li class="sidebar-item <?= ($title=='keluar')? 'active':'' ?>">
 						<a class="sidebar-link" href="barang_keluar">
               <i class="align-middle" data-feather="file-minus"></i> <span class="align-middle">Barang Keluar</span>
             </a>
 					</li>
 
-					<li class="sidebar-item active">
+					<li class="sidebar-item <?= ($title=='total')? 'active':'' ?>">
 						<a class="sidebar-link" href="total_barang">
               <i class="align-middle" data-feather="file"></i> <span class="align-middle">Total Barang</span>
             </a>
@@ -105,33 +106,7 @@
 			</nav>
 		
 
-			<main class="content">
-				<div class="container-fluid p-0">
-					
-					<div class="mb-3">
-						<h1 class="h3 d-inline align-middle">Barang Masuk</h1>
-                        <table class="table table-stripped" style='word-wrap: break-word; table-layout: fixed;'>
-							<thead>
-								<tr>
-								<th scope="col" style="width:30%">No. </th>
-								<th scope="col" style="width:30%">Nama Barang</th>
-								<th scope="col" style="width:30%">Total Barang</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php $no=1; foreach($barang_masuk as $barang):?>
-									<td><?= $no++?></td>
-									<td><?= $barang['nama']?></td>
-									<td><?= ($barang['kuantitas']-$barang['kuantitaskeluar'])?></td>
-									
-									
-									<?php endforeach?>
-							</tbody>
-						</table>
-		
-  </a>
-			</main>
-			</main>
+            <?= $this->renderSection('content');?>
 		</div>
 	</div>
 
